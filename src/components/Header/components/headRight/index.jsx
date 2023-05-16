@@ -7,15 +7,20 @@ import IconAvatar from '@/assets/svg/icon-profile-avatar.jsx'
 const HeadRight = memo(() => {
   const [showPanel, setShowPanel] = useState(false)
   // 添加window监听
-  useEffect(()=>{
+  useEffect(() => {
     function windowHandlieClick() {
       setShowPanel(false)
     }
-    window.addEventListener('click', windowHandlieClick, true)
+    window.addEventListener('click', windowHandlieClick)
     return () => {
-      window.removeEventListener('click', windowHandlieClick, true)
+      window.removeEventListener('click', windowHandlieClick)
     }
-  },[])
+  }, [])
+
+  const btnClick = (e) => {
+    setShowPanel(!showPanel)
+    e.stopPropagation()
+  }
 
   return (
     <RightWrapper>
@@ -26,12 +31,7 @@ const HeadRight = memo(() => {
           <IconGrobal></IconGrobal>
         </span>
       </div>
-      <div
-        className="profile"
-        onClick={() => {
-          setShowPanel(!showPanel)
-        }}
-      >
+      <div className="profile" onClick={btnClick}>
         <IconAvatar></IconAvatar>
         <IconMenu></IconMenu>
         {showPanel && (
