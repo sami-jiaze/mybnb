@@ -3,6 +3,8 @@ import { HomeWrapper } from './style'
 import HomeBanner from './components/homeBanner'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeGoodPriceData } from '../../store/modules/home'
+import SectionHeader from '../../components/sectionHeader'
+import RoomItem from '../../components/RoomItem'
 
 const Home = memo(() => {
   const { goodPriceInfo } = useSelector(
@@ -19,18 +21,17 @@ const Home = memo(() => {
 
   return (
     <HomeWrapper>
-      <div>home</div>
-      <div>
-        {goodPriceInfo.title}
-        {goodPriceInfo?.list?.map(item => {
-          return (
-            <li key={item.id}>
-              {item.id}-{item.name}
-            </li>
-          )
-        })}
-      </div>
       <HomeBanner></HomeBanner>
+      <div className="content">
+        <div className="good-price">
+          <SectionHeader title={goodPriceInfo.title}></SectionHeader>
+          <ul className='room-list'>
+            {goodPriceInfo?.list?.map(item => {
+              return <RoomItem itemData={item} key={item.id}></RoomItem>
+            })}
+          </ul>
+        </div>
+      </div>
     </HomeWrapper>
   )
 })
