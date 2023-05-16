@@ -1,7 +1,9 @@
 import React, { memo, useEffect } from 'react'
 import MyRequest from '../../services'
+import { HomeWrapper } from './style'
+import HomeBanner from './components/homeBanner'
 
-const index = memo(() => {
+const Home = memo(() => {
   // useEffect(()=>{
   //   MyRequest.get({url: "/home"}).then(res=>{
   //     console.log(res);
@@ -9,8 +11,11 @@ const index = memo(() => {
   // },[])
   
   return (
-    <div>home</div>
+    <HomeWrapper>
+      <div>home</div>
+      <HomeBanner></HomeBanner>
+    </HomeWrapper>
   )
 })
 
-export default index
+export default Home
