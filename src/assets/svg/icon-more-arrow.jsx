@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import styleStrToObj from './utils'
+import { styleStrToObj } from '@/utils/styleStrToObj'
 
 const IconMoreArrow = memo(() => {
   return (

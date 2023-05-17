@@ -4,6 +4,8 @@
 // npm i normalize.css
 // npm i -D styled-components@5.3.10
 // npm i axios
+// npm install antd --save
+// npm i classnames
 
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'

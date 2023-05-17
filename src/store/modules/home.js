@@ -1,30 +1,91 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getHomeGoodPriceData } from '../../services'
+import {
+  getHomeDiscountData,
+  getHomeGoodPriceData,
+  getHomeHighScoreData,
+  getHomeRecommendData
+} from '../../services'
 
-export const fetchHomeGoodPriceData = createAsyncThunk('fetchHomeData', async() => {
-  const res = await getHomeGoodPriceData()
-  return res;
-})
+// 高性价比
+export const fetchHomeGoodPriceData = createAsyncThunk(
+  'fetchHomePriceData',
+  async (payload, { dispatch }) => {
+    const res = await getHomeGoodPriceData()
+    dispatch(changeGoodPriceAction(res));
+  }
+)
+// 高评分
+export const fetchHomeHighScoreData = createAsyncThunk(
+  'fetchHomeScoreData',
+  async (payload, store) => {
+    // console.log(payload, store);
+    getHomeHighScoreData().then(res=>{
+      store.dispatch(changeHighScoreAction(res));
+    })
+  }
+)
+// 折扣
+export const fetchHomeDiscountData = createAsyncThunk(
+  'fetchHomeDiscountData',
+  async () => {
+    const res = await getHomeDiscountData()
+    return res
+  }
+)
+// 热门推荐
+export const fetchHomeRecommendData = createAsyncThunk(
+  'fetchHomeRecommendData',
+  async () => {
+    const res = await getHomeRecommendData()
+    return res
+  }
+)
 
 const homeSlice = createSlice({
   name: 'home',
   initialState: {
-    homeList: [],
-    goodPriceInfo: {}
+    highScoreInfo: [],
+    goodPriceInfo: [],
+    discountInfo: [],
+    recommendInfo: []
   },
   reducers: {
     changeGoodPriceAction(state, res) {
-      console.log("changeGoodPriceAction", res);
+      console.log('changeGoodPriceAction', res)
       state.goodPriceInfo = res.payload.data
+    },
+    changeHighScoreAction(state, res) {
+      state.highScoreInfo = res.payload.data
+    },
+    changeDiscountInfo(state, res) {
+      state.discountInfo = res.payload.data
+    },
+    changeRecommendInfo(state, res) {
+      state.recommendInfo = res.payload.data
     }
   },
   extraReducers: {
-    [fetchHomeGoodPriceData.fulfilled](state, res) {
-      console.log("payload", res.payload.data);
-      state.goodPriceInfo = res.payload.data
+    // [fetchHomeGoodPriceData.fulfilled](state, res) {
+    //   state.goodPriceInfo = res.payload.data
+    // },
+    // [fetchHomeHighScoreData.fulfilled](state, res) {
+    //   state.highScoreInfo = res.payload.data
+    // },
+    [fetchHomeDiscountData.fulfilled](state, res) {
+      // console.log('fetchHomeDiscountData', res.payload.data)
+      state.discountInfo = res.payload.data
+    },
+    [fetchHomeRecommendData.fulfilled](state, res) {
+      // console.log('fetchHomeDiscountData', res.payload.data)
+      state.recommendInfo = res.payload.data
     }
   }
 })
 
-export const { changeGoodPriceAction } = homeSlice.actions
+export const {
+  changeGoodPriceAction,
+  changeHighScoreAction,
+  changeDiscountInfo,
+  changeRecommendInfo
+} = homeSlice.actions
 export default homeSlice.reducer

@@ -5,7 +5,7 @@ import SectionHeader from '@/components/SectionHeader'
 import Roombody from '@/components/RoomBody'
 import SectionTabs from '@/components/SectionTabs'
 import { SectionV2Wrapper } from './style'
-// import SectionFooter from '@/components/Footer'
+import SectionFooter from '@/components/SectionFooter'
 
 const HomeSectionV2 = memo((props) => {
   const { infoData } = props
@@ -28,7 +28,7 @@ const HomeSectionV2 = memo((props) => {
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
       <SectionTabs tabNames={tabNames} tabClick={tabClickHandle}/>
       <Roombody roomList={infoData.dest_list?.[name]} itemWidth="33.33333%"/>
-      {/* <SectionFooter name={name}/> */}
+      <SectionFooter name={name}/>
     </SectionV2Wrapper>
   )
 })
