@@ -14,7 +14,7 @@ const SectionFooter = memo((props) => {
 
   const navigate = useNavigate()
   function moreClickHandle() {
-    navigate("/entire")
+    navigate("/detail")
   }
 
   return (

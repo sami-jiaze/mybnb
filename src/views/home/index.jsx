@@ -7,15 +7,17 @@ import {
   fetchHomeGoodPriceData,
   fetchHomeHighScoreData,
   fetchHomeLongforData,
+  fetchHomePlusData,
   fetchHomeRecommendData
 } from '../../store/modules/home'
 import SectionHeader from '../../components/SectionHeader'
 import RoomBody from '../../components/RoomBody'
-import HomeSectionV2 from './components/homeSection2'
+import HomeRecommend from './components/homeRecommend'
 import SectionTabs from '../../components/SectionTabs'
 import { isEmptyObject } from '../../utils/isEmptyObject'
 import SectionFooter from '../../components/SectionFooter'
 import HomeLongfor from './components/homeLongfor'
+import HomePlus from './components/homePlus'
 
 const Home = memo(() => {
   const {
@@ -23,14 +25,16 @@ const Home = memo(() => {
     highScoreInfo,
     discountInfo,
     recommendInfo,
-    longforInfo
+    longforInfo,
+    plusInfo
   } = useSelector(
     state => ({
       goodPriceInfo: state.home.goodPriceInfo,
       highScoreInfo: state.home.highScoreInfo,
       discountInfo: state.home.discountInfo,
       recommendInfo: state.home.recommendInfo,
-      longforInfo: state.home.longforInfo
+      longforInfo: state.home.longforInfo,
+      plusInfo: state.home.plusInfo
     }),
     shallowEqual
   )
@@ -54,6 +58,7 @@ const Home = memo(() => {
     dispatch(fetchHomeDiscountData())
     dispatch(fetchHomeRecommendData())
     dispatch(fetchHomeLongforData())
+    dispatch(fetchHomePlusData())
   }, [dispatch])
 
   return (
@@ -102,14 +107,14 @@ const Home = memo(() => {
         </div>
         {/* 推荐 */}
         {isEmptyObject(recommendInfo) && (
-          <HomeSectionV2 infoData={recommendInfo}></HomeSectionV2>
+          <HomeRecommend infoData={recommendInfo}></HomeRecommend>
         )}
         {/* 想去 */}
-        {
-          isEmptyObject(longforInfo) && (
-            <HomeLongfor infoData={longforInfo}></HomeLongfor>
-          )
-        }
+        {isEmptyObject(longforInfo) && (
+          <HomeLongfor infoData={longforInfo}></HomeLongfor>
+        )}
+        {/* plus */}
+        {isEmptyObject(plusInfo) && <HomePlus infoData={plusInfo}></HomePlus>}
       </div>
     </HomeWrapper>
   )

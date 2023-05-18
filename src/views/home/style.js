@@ -6,6 +6,8 @@ export const HomeWrapper = styled.div`
     margin: 0 auto;
   }
 
+  .high-score,
+  .discount,
   .good-price {
     margin-top: 30px;
   }

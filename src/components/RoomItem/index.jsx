@@ -18,10 +18,11 @@ const RoomItem = memo(props => {
         <div className="price">￥{itemData.price}/天</div>
         <div className="bottom">
           <Rate
-            style={{ color: 'red', fontSize: '13px' }}
+            className='rate'
+            style={{ color: 'red', fontSize: '10px'}}
             disabled
             allowHalf
-            defaultValue={itemData.star_rating ?? 4.2}
+            defaultValue={itemData.star_rating ?? 4}
           ></Rate>
           <span className="count">{itemData.reviews_count}</span>
           <span className="extra">

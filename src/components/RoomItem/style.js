@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ItemWrapper = styled.div`
+  flex-shrink: 0; // 不压缩
   box-sizing: border-box;
   width: ${props => props.itemWidth};
   padding: 9px;
@@ -30,17 +31,16 @@ export const ItemWrapper = styled.div`
     font-size: 12px;
     font-weight: 700;
     color: ${props => props.verifyColor};
-
   }
 
   .name {
     font-size: 16px;
     font-weight: 700;
 
-    overflow: hidden;  
-    text-overflow: ellipsis; 
-    display: -webkit-box; 
-    -webkit-line-clamp: 2; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 
@@ -58,11 +58,16 @@ export const ItemWrapper = styled.div`
     .count {
       margin: 0 2px -2px 10px;
     }
-    .extra{
+    .extra {
       margin-top: 2px;
     }
     .MuiRating-decimal {
       margin-right: -2px;
+    }
+    .rate {
+      li {
+        margin-inline-end: 0px !important;
+      }
     }
   }
 `
