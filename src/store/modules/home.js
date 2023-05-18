@@ -3,6 +3,7 @@ import {
   getHomeDiscountData,
   getHomeGoodPriceData,
   getHomeHighScoreData,
+  getHomeLongforData,
   getHomeRecommendData
 } from '../../services'
 
@@ -12,6 +13,14 @@ export const fetchHomeGoodPriceData = createAsyncThunk(
   async (payload, { dispatch }) => {
     const res = await getHomeGoodPriceData()
     dispatch(changeGoodPriceAction(res));
+  }
+)
+// 想去
+export const fetchHomeLongforData = createAsyncThunk(
+  'fetchHomeLongforData',
+  async (payload, { dispatch }) => {
+    const res = await getHomeLongforData()
+    dispatch(changeLongforInfo(res))
   }
 )
 // 高评分
@@ -47,7 +56,8 @@ const homeSlice = createSlice({
     highScoreInfo: [],
     goodPriceInfo: [],
     discountInfo: [],
-    recommendInfo: []
+    recommendInfo: [],
+    longforInfo: []
   },
   reducers: {
     changeGoodPriceAction(state, res) {
@@ -62,6 +72,9 @@ const homeSlice = createSlice({
     },
     changeRecommendInfo(state, res) {
       state.recommendInfo = res.payload.data
+    },
+    changeLongforInfo(state, res){
+      state.longforInfo = res.payload.data
     }
   },
   extraReducers: {
@@ -86,6 +99,7 @@ export const {
   changeGoodPriceAction,
   changeHighScoreAction,
   changeDiscountInfo,
-  changeRecommendInfo
+  changeRecommendInfo,
+  changeLongforInfo
 } = homeSlice.actions
 export default homeSlice.reducer

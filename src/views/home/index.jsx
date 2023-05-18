@@ -6,6 +6,7 @@ import {
   fetchHomeDiscountData,
   fetchHomeGoodPriceData,
   fetchHomeHighScoreData,
+  fetchHomeLongforData,
   fetchHomeRecommendData
 } from '../../store/modules/home'
 import SectionHeader from '../../components/SectionHeader'
@@ -14,18 +15,25 @@ import HomeSectionV2 from './components/homeSection2'
 import SectionTabs from '../../components/SectionTabs'
 import { isEmptyObject } from '../../utils/isEmptyObject'
 import SectionFooter from '../../components/SectionFooter'
+import HomeLongfor from './components/homeLongfor'
 
 const Home = memo(() => {
-  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo } =
-    useSelector(
-      state => ({
-        goodPriceInfo: state.home.goodPriceInfo,
-        highScoreInfo: state.home.highScoreInfo,
-        discountInfo: state.home.discountInfo,
-        recommendInfo: state.home.recommendInfo
-      }),
-      shallowEqual
-    )
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    recommendInfo,
+    longforInfo
+  } = useSelector(
+    state => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+      recommendInfo: state.home.recommendInfo,
+      longforInfo: state.home.longforInfo
+    }),
+    shallowEqual
+  )
 
   const tabNamesList = discountInfo.dest_address?.map(item => item.name)
   // useState初始值只对首次渲染生效
@@ -45,6 +53,7 @@ const Home = memo(() => {
     dispatch(fetchHomeHighScoreData())
     dispatch(fetchHomeDiscountData())
     dispatch(fetchHomeRecommendData())
+    dispatch(fetchHomeLongforData())
   }, [dispatch])
 
   return (
@@ -95,6 +104,12 @@ const Home = memo(() => {
         {isEmptyObject(recommendInfo) && (
           <HomeSectionV2 infoData={recommendInfo}></HomeSectionV2>
         )}
+        {/* 想去 */}
+        {
+          isEmptyObject(longforInfo) && (
+            <HomeLongfor infoData={longforInfo}></HomeLongfor>
+          )
+        }
       </div>
     </HomeWrapper>
   )
