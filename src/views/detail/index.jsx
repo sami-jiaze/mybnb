@@ -15,7 +15,7 @@ const Detail = memo(() => {
   )
   
   const pInfo = {
-    offset: 20,
+    offset: 0,
     size: 20
   }
 

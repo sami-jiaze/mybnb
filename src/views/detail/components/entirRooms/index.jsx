@@ -18,6 +18,7 @@ const EntireRooms = memo(() => {
           )
         })}
       </div>
+      <div className="cover"></div>
     </RoomWrapper>
   )
 })
