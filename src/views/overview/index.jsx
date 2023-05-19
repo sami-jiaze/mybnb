@@ -1,9 +1,14 @@
 import React, { memo } from 'react'
+import { OverWrapper } from './style'
+import { useSelector } from 'react-redux'
 
-const index = memo(() => {
-  return (
-    <div>over</div>
-  )
+const OverView = memo(() => {
+  const { NavInfo } = useSelector(state => ({
+    NavInfo: state.overview.NavRoomItem
+  }))
+
+  console.log("NavInfo", NavInfo)
+  return <OverWrapper>over</OverWrapper>
 })
 
-export default index
+export default OverView
