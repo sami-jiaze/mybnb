@@ -23,6 +23,8 @@ export const ItemWrapper = styled.div`
       top: 0;
       width: 100%;
       height: 100%;
+      /* 不被压缩 */
+      object-fit: cover;
     }
   }
 
