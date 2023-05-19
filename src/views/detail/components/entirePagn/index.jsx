@@ -1,15 +1,15 @@
 import React, { memo } from 'react'
 import { PagnWrapper } from './style'
 import { Pagination } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { changeCurrentPageAction, fetchEntireRoomListData } from '../../../../store/modules/detail'
 
 const EntirePagn = memo(() => {
   const { totalCount, currentPage, roomList } = useSelector(state => ({
     totalCount: state.detail.count,
     currentPage: state.detail.currentPage,
-    roomList: state.detail.roomList
-  }))
+    roomList: state.detail.roomList,
+  }), shallowEqual)
 
   const totalPages = Math.ceil(totalCount / 20)
   const startPage = currentPage * 20 + 1

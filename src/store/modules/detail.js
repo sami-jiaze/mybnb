@@ -6,7 +6,9 @@ export const fetchEntireRoomListData = createAsyncThunk(
   async (payload, getState) => {
     // console.log("payload", payload);
     // console.log("getState", getState);
+    getState.dispatch(changeIsLoadingAction(true))
     const res = await getEntireList(payload)
+    getState.dispatch(changeIsLoadingAction(false))
     // console.log(res)
     const roomList = res.data.list
     const count = res.data.totalCount
@@ -22,7 +24,8 @@ const detailSlice = createSlice({
   initialState: {
     count: 0,
     roomList: [],
-    currentPage: 0
+    currentPage: 0,
+    isLoading: false
   },
   reducers: {
     changeRoomListAction(state, res) {
@@ -34,8 +37,11 @@ const detailSlice = createSlice({
       state.count = res.payload
     },
     changeCurrentPageAction(state, res) {
-      console.log("res", res);
+      console.log('res', res)
       state.currentPage = res.payload
+    },
+    changeIsLoadingAction(state, res) {
+      state.isLoading = res.payload
     }
   }
 })
@@ -43,6 +49,7 @@ const detailSlice = createSlice({
 export const {
   changeRoomListAction,
   changeTotalCountAction,
-  changeCurrentPageAction
+  changeCurrentPageAction,
+  changeIsLoadingAction
 } = detailSlice.actions
 export default detailSlice.reducer
