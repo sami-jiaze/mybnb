@@ -73,7 +73,7 @@ const homeSlice = createSlice({
   },
   reducers: {
     changeGoodPriceAction(state, res) {
-      console.log('changeGoodPriceAction', res)
+      // console.log('changeGoodPriceAction', res)
       state.goodPriceInfo = res.payload.data
     },
     changeHighScoreAction(state, res) {

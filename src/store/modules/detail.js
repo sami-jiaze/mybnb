@@ -37,7 +37,7 @@ const detailSlice = createSlice({
       state.count = res.payload
     },
     changeCurrentPageAction(state, res) {
-      console.log('res', res)
+      // console.log('res', res)
       state.currentPage = res.payload
     },
     changeIsLoadingAction(state, res) {
