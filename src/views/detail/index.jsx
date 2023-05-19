@@ -1,9 +1,36 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
+import { DetailWrapper } from './style'
+import EntireFilter from './components/entirFilter'
+import EntireRooms from './components/entirRooms'
+import EntirePagn from './components/entirePagn'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { fetchEntireRoomListData } from '../../store/modules/detail'
 
-const index = memo(() => {
+const Detail = memo(() => {
+  const { EntireRoomsInfo } = useSelector(
+    state => ({
+      entireRoomsInfo: state.detail.entireRoomsInfo
+    }),
+    shallowEqual
+  )
+  
+  const pInfo = {
+    offset: 20,
+    size: 20
+  }
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchEntireRoomListData(pInfo))
+  }, [dispatch])
+
   return (
-    <div>detail</div>
+    <DetailWrapper>
+      <EntireFilter></EntireFilter>
+      <EntireRooms EntireRoomsInfo={EntireRoomsInfo}></EntireRooms>
+      <EntirePagn></EntirePagn>
+    </DetailWrapper>
   )
 })
 
-export default index
+export default Detail

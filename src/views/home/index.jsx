@@ -39,7 +39,7 @@ const Home = memo(() => {
     shallowEqual
   )
 
-  const tabNamesList = discountInfo.dest_address?.map(item => item.name)
+  const tabNamesList = discountInfo.dest_address?.map(item => item.name) ?? {}
   // useState初始值只对首次渲染生效
   const [tabName, setTabName] = useState()
   // 接受来着子组件SectionTabs的回调函数

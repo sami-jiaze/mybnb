@@ -7,12 +7,12 @@ import SectionTabs from '@/components/SectionTabs'
 import { SectionV2Wrapper } from './style'
 import SectionFooter from '@/components/SectionFooter'
 
-const HomeSectionV2 = memo((props) => {
+const HomeSectionV2 = memo(props => {
   const { infoData } = props
 
-  const initialName = Object.keys(infoData.dest_list)[0]
+  const initialName = Object.keys(infoData.dest_list ?? {})[0]
   const [name, setName] = useState(initialName)
-  
+
   const tabNames = infoData.dest_address?.map(item => item.name)
 
   // useEffect(() => {
@@ -25,10 +25,10 @@ const HomeSectionV2 = memo((props) => {
 
   return (
     <SectionV2Wrapper>
-      <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
-      <SectionTabs tabNames={tabNames} tabClick={tabClickHandle}/>
-      <Roombody roomList={infoData.dest_list?.[name]} itemWidth="33.33333%"/>
-      <SectionFooter name={name}/>
+      <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
+      <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />
+      <Roombody roomList={infoData.dest_list?.[name]} itemWidth="33.33333%" />
+      <SectionFooter name={name} />
     </SectionV2Wrapper>
   )
 })

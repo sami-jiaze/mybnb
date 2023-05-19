@@ -18,7 +18,7 @@ const ScrollView = memo(props => {
 
     const totalWidth = scrollWidth - clientWidth // 可以滚动的距离
     totalDistanceRef.current = totalWidth
-    setShowRight(totalWidth > scrollRef.current.children[posIndex].offsetLeft)
+    setShowRight(totalWidth > scrollRef.current.children[posIndex]?.offsetLeft)
   }, [props.children])
 
   const controlClickHandle = isRight => {
