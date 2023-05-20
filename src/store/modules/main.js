@@ -4,7 +4,8 @@ const mainSlice = createSlice({
   name: 'main',
   initialState: {
     headConfig: {
-      isFixed: false
+      isFixed: false,
+      topAlpha: false
     }
   },
   reducers: {
