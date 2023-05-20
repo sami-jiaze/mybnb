@@ -5,6 +5,7 @@ import EntireRooms from './components/entirRooms'
 import EntirePagn from './components/entirePagn'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchEntireRoomListData } from '../../store/modules/detail'
+import { changeHeadConfigAction } from '../../store/modules/main'
 
 const Detail = memo(() => {
   const { EntireRoomsInfo } = useSelector(
@@ -22,6 +23,7 @@ const Detail = memo(() => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchEntireRoomListData(pInfo))
+    dispatch(changeHeadConfigAction({isFixed: true}))
   }, [dispatch])
 
   return (

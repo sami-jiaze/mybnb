@@ -18,6 +18,7 @@ import { isEmptyObject } from '../../utils/isEmptyObject'
 import SectionFooter from '../../components/SectionFooter'
 import HomeLongfor from './components/homeLongfor'
 import HomePlus from './components/homePlus'
+import { changeHeadConfigAction } from '../../store/modules/main'
 
 const Home = memo(() => {
   const {
@@ -59,6 +60,7 @@ const Home = memo(() => {
     dispatch(fetchHomeRecommendData())
     dispatch(fetchHomeLongforData())
     dispatch(fetchHomePlusData())
+    dispatch(changeHeadConfigAction({isFixed: true}))
   }, [dispatch])
 
   return (

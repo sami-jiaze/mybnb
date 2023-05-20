@@ -22,13 +22,13 @@ import ThemeA from './assets/theme'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <Suspense fallback="loading">
-    <Provider store={store}>
+  <Provider store={store}>
+    <Suspense fallback="loading">
       <ThemeProvider theme={ThemeA}>
         <HashRouter>
           <App />
         </HashRouter>
       </ThemeProvider>
-    </Provider>
-  </Suspense>
+    </Suspense>
+  </Provider>
 )
