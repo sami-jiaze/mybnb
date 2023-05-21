@@ -8,7 +8,7 @@
 // npm i classnames
 // npm i react-transition-group
 
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
