@@ -2,7 +2,6 @@ import React, { memo, useEffect, useState } from 'react'
 import {
   CSSTransition,
   SwitchTransition,
-  TransitionGroup
 } from 'react-transition-group'
 
 import { PictureWrapper } from './style'

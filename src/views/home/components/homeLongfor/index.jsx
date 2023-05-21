@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { LongforWrapper } from './style'
-import SectionHeader from '../../../../components/SectionHeader'
+import SectionHeader from '../../../../components/sectionHeader'
 import LongforItem from '../../../../components/LongforItem'
 import ScrollView from '../../../../base-ui/ScrollView'
 const HomeLongfor = memo(props => {

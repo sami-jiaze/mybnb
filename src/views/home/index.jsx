@@ -10,7 +10,7 @@ import {
   fetchHomePlusData,
   fetchHomeRecommendData
 } from '../../store/modules/home'
-import SectionHeader from '../../components/SectionHeader'
+import SectionHeader from '../../components/sectionHeader'
 import RoomBody from '../../components/RoomBody'
 import HomeRecommend from './components/homeRecommend'
 import SectionTabs from '../../components/SectionTabs'
@@ -60,7 +60,7 @@ const Home = memo(() => {
     dispatch(fetchHomeRecommendData())
     dispatch(fetchHomeLongforData())
     dispatch(fetchHomePlusData())
-    dispatch(changeHeadConfigAction({isFixed: true,topAlpha: true}))
+    dispatch(changeHeadConfigAction({ isFixed: true, topAlpha: true }))
   }, [dispatch])
 
   return (
