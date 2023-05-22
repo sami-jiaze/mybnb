@@ -1,19 +1,38 @@
-import React, { memo, useRef } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import { ItemWrapper } from './style'
 import { Rate } from 'antd'
 import { Carousel } from 'antd'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
 import IconArrowRight from '@/assets/svg/icon-arrow-right.jsx'
+import Indicator from '@/base-ui/Indicator'
+import classNames from 'classnames'
 
 const RoomItem = memo(props => {
   const { itemData, itemWidth = '25%', itemClick } = props
   // 轮播图ref
   const carouRef = useRef()
+  // 指示器下标
+  const [curIndex, setIndex] = useState(0)
 
   // 轮播图箭头点击切换函数
   function handleArrowClick(e, isRight = true) {
     e.stopPropagation()
     isRight ? carouRef.current.next() : carouRef.current.prev()
+
+    let newIndex = isRight ? curIndex + 1 : curIndex - 1
+    if (newIndex < 0) {
+      newIndex = itemData.picture_urls.length - 1
+    }
+    if (newIndex > itemData.picture_urls.length - 1) {
+      newIndex = 0
+    }
+    setIndex(newIndex)
+  }
+
+  function liClick(e, index) {
+    e.stopPropagation()
+    carouRef.current.goTo(index, false);
+    setIndex(index)
   }
 
   // RoomItem 点击事件
@@ -28,7 +47,9 @@ const RoomItem = memo(props => {
       onClick={itemClickHandler}
     >
       <div className="inner">
+        {/* 判断是否需要轮播图  */}
         {!!itemData?.picture_urls?.length ? (
+          // 轮播图
           <div className="swiper">
             <div className="control">
               <div
@@ -44,7 +65,28 @@ const RoomItem = memo(props => {
                 <IconArrowRight width="30" height="30" />
               </div>
             </div>
-            <Carousel ref={carouRef}>
+            {/* 指示器 */}
+            <div className="indicator">
+              <Indicator selectIndex={curIndex}>
+                {itemData?.picture_urls?.map((item, index) => {
+                  return (
+                    <div
+                      className="item"
+                      key={item}
+                      onClick={e => liClick(e, index)}
+                    >
+                      <span
+                        className={classNames('dot', {
+                          active: curIndex === index
+                        })}
+                        key={item}
+                      ></span>
+                    </div>
+                  )
+                })}
+              </Indicator>
+            </div>
+            <Carousel ref={carouRef} dots={false}>
               {itemData.picture_urls.map(item => {
                 return (
                   <div className="cover" key={item}>
@@ -55,19 +97,17 @@ const RoomItem = memo(props => {
             </Carousel>
           </div>
         ) : (
+          // 不需要轮播图
           <div className="cover">
             <img src={itemData.picture_url} alt="" />
           </div>
         )}
-        {/* <div className="cover">
-          <img src={itemData.picture_url} alt="" />
-        </div> */}
 
         <div className="desc">{itemData.verify_info.messages.join(' ')}</div>
         <div className="name">{itemData.name}</div>
         <div className="price">￥{itemData.price}/天</div>
         <div className="bottom">
-          {/* 星星 */}
+          {/* 评分星星 */}
           <Rate
             className="rate"
             style={{ color: 'red', fontSize: '10px' }}
