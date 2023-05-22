@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { PlusWrapper } from './style'
-import SectionHeader from '../../../../components/SectionHeader'
+import SectionHeader from '../../../../components/sectionHeader'
 import ScrollView from '@/base-ui/ScrollView'
 import SectionFooter from '../../../../components/SectionFooter'
 import RoomItem from '../../../../components/RoomItem'
