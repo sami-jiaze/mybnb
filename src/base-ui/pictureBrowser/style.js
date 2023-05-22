@@ -59,7 +59,7 @@ export const PictureWrapper = styled.div`
     }
   }
 
-  .preview{
+  .preview {
     display: flex;
     justify-content: center;
     height: 100px;
@@ -73,15 +73,16 @@ export const PictureWrapper = styled.div`
     .desc {
       display: flex;
       justify-content: space-between;
-      .toggle{
+      .toggle {
         cursor: pointer;
       }
     }
     .list {
       margin-top: 3px;
       overflow: hidden;
-      transition:  height 300ms ease;
-      .item{
+      transition: height 300ms ease;
+      height: ${props => (props.showList ? '80px' : '0px')};
+      .item {
         margin-right: 15px;
         cursor: pointer;
         img {
@@ -96,7 +97,6 @@ export const PictureWrapper = styled.div`
       }
     }
   }
-
 
   // 动画
   .pic-enter {
