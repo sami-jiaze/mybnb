@@ -1,3 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const indicatorWrapper = styled.div``
+export const IndicatorWrapper = styled.div`
+  overflow: hidden;
+  .i-content {
+    display: flex;
+    position: relative;
+    transition: transform 500ms ease;
+    > * {
+      flex-shrink: 0;
+    }
+  }
+`
