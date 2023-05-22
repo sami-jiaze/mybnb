@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.div`
   border-bottom: 1px solid #eee;
   /* background-color: #fff; */
   background-color: ${props =>
-    props.isAlpha ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,1)'};
+    props.isAlpha ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,1)'};
   &.fixed {
     position: fixed;
     z-index: 99;
