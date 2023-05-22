@@ -18,7 +18,7 @@ const Indicator = memo(props => {
     // 特殊情况处理
     if (distance < 0) distance = 0
     const totalDistance = contentScroll - contentWidth
-    if (distance > 0) distance = totalDistance
+    if (distance > totalDistance) distance = totalDistance
 
     contentRef.current.style.transform = `translate(${-distance}px)`
 
