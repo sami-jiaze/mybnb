@@ -24,6 +24,7 @@ const Detail = memo(() => {
   useEffect(() => {
     dispatch(fetchEntireRoomListData(pInfo))
     dispatch(changeHeadConfigAction({isFixed: true}))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
   return (

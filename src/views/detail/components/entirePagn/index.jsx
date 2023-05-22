@@ -11,7 +11,7 @@ const EntirePagn = memo(() => {
     roomList: state.detail.roomList,
   }), shallowEqual)
 
-  const totalPages = Math.ceil(totalCount / 20)
+  // const totalPages = Math.ceil(totalCount / 20)
   const startPage = currentPage * 20 + 1
   const endPage = (currentPage + 1) * 20
 

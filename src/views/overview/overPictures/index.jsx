@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
 import { OverPictureWrapper } from './style'
 import { shallowEqual, useSelector } from 'react-redux'
 
