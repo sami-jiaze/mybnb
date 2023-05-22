@@ -60,7 +60,7 @@ const Home = memo(() => {
     dispatch(fetchHomeRecommendData())
     dispatch(fetchHomeLongforData())
     dispatch(fetchHomePlusData())
-    dispatch(changeHeadConfigAction({isFixed: true,topAlpha: true}))
+    dispatch(changeHeadConfigAction({ isFixed: true, topAlpha: true }))
   }, [dispatch])
 
   return (
